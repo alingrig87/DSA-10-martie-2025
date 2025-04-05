@@ -67,7 +67,7 @@ public class LinkedList {
     }
 
     public boolean hasCycle() {
-        //
+        
         return true;
     }
 
@@ -79,6 +79,20 @@ public class LinkedList {
             currentNode = currentNode.next;
         }
         currentNode.next = head.next;
+    }
+
+    public void reverseLinkedList() {
+        Node prev = null;
+        Node currentNode = head;
+
+        while(currentNode != null) {
+            Node nextNode = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = nextNode;
+        }
+
+        head = prev;
     }
 
 
@@ -93,8 +107,11 @@ public class LinkedList {
         l.add(6);
         l.add(7);
         l.add(8);
-        l.createCycle();
-        l.display();
+        // l.createCycle();
+        // l.display();
         l.findMiddle();
+
+        l.reverseLinkedList();
+        l.display();
     }
 }
